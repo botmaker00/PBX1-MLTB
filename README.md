@@ -22,7 +22,7 @@
 
 ## 📁 UPSTREAM REPO
 
-- **GitHub Source**: [`PBX1-LEECH`](https://github.com/jattsbots/PBX1-LEECH)
+- **GitHub Source**: [`PBX1-MLTB`](https://github.com/jatt-bot/PBX1-MLTB)
 
 ## 🌿 UPSTREAM BRANCH
 
