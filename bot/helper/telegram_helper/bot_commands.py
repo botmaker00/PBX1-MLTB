@@ -21,11 +21,11 @@ class _BotCommands:
         self.CountCommand = f'countx{CMD_SUFFIX}'
         self.DeleteCommand = f'delx{CMD_SUFFIX}'
         self.CancelMirror = f'cancelx{CMD_SUFFIX}'
-        self.CancelAllCommand = [f'cancelall{CMD_SUFFIX}', 'cancellallbot']
-        self.ListCommand = f'list{CMD_SUFFIX}'
-        self.SearchCommand = f'search{CMD_SUFFIX}'
-        self.StatusCommand = [f'status{CMD_SUFFIX}', f's{CMD_SUFFIX}', 'statusall']
-        self.UsersCommand = f'users{CMD_SUFFIX}'
+        self.CancelAllCommand = [f'cancelallx{CMD_SUFFIX}', 'cancellallbotx']
+        self.ListCommand = f'listx{CMD_SUFFIX}'
+        self.SearchCommand = f'searchx{CMD_SUFFIX}'
+        self.StatusCommand = [f'statusx{CMD_SUFFIX}', f's{CMD_SUFFIX}', 'statusall']
+        self.UsersCommand = f'usersx{CMD_SUFFIX}'
         self.AuthorizeCommand = [f'authorize{CMD_SUFFIX}', f'a{CMD_SUFFIX}']
         self.UnAuthorizeCommand = [f'unauthorize{CMD_SUFFIX}', f'ua{CMD_SUFFIX}']
         self.AddBlackListCommand = [f'blacklist{CMD_SUFFIX}', f'bl{CMD_SUFFIX}']
