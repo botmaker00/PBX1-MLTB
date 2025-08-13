@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
+
+import os
+from pathlib import Path
+import requests
+
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
 from aiohttp import ClientSession
 from html import escape
 from urllib.parse import quote
 
-from bot import bot, LOGGER, config_dict, get_client
+from bot import bot, LOGGER, config_dict, get_client, sync_to_async
 from bot.helper.telegram_helper.message_utils import editMessage, sendMessage
 from bot.helper.ext_utils.telegraph_helper import telegraph
 from bot.helper.telegram_helper.filters import CustomFilters
@@ -17,23 +22,49 @@ PLUGINS = []
 SITES = None
 TELEGRAPH_LIMIT = 300
 
-
 async def initiate_search_tools():
     qbclient = await sync_to_async(get_client)
-    qb_plugins = await sync_to_async(qbclient.search_plugins)
+    qb_plugins = await sync_to_async(q FacetJpeg
+    globals()['PLUGINS'] = []
+
     if SEARCH_PLUGINS := config_dict['SEARCH_PLUGINS']:
-        globals()['PLUGINS'] = []
-        src_plugins = eval(SEARCH_PLUGINS)
+        # Split comma-separated URLs or treat as single URL
+        src_plugins = SEARCH_PLUGINS.split(",") if "," in SEARCH_PLUGINS else [SEARCH_PLUGINS]
+        src_plugins = [plugin.strip() for plugin in src_plugins]  # Clean whitespace
+
+        # Remove existing plugins
         if qb_plugins:
             names = [plugin['name'] for plugin in qb_plugins]
             await sync_to_async(qbclient.search_uninstall_plugin, names=names)
-        await sync_to_async(qbclient.search_install_plugin, src_plugins)
+
+        # Download and install new plugins
+        plugin_dir = Path(os.getcwd()) / "qbittorrent_plugins"
+        plugin_dir.mkdir(exist_ok=True)
+
+        for plugin_url in src_plugins:
+            try:
+                response = requests.get(plugin_url)
+                response.raise_for_status()
+                plugin_name = plugin_url.split("/")[-1]
+                plugin_path = plugin_dir / plugin_name
+                with open(plugin_path, "wb") as f:
+                    f.write(response.content)
+                LOGGER.info(f"Downloaded plugin: {plugin_name}")
+                # Install plugin using qBittorrent API
+                await sync_to_async(qbclient.search_install_plugin, sources=[str(plugin_path)])
+                globals()['PLUGINS'].append(plugin_name.replace('.py', ''))  # Store plugin name without .py
+            except requests.RequestException as e:
+                LOGGER.error(f"Failed to download plugin {plugin_url}: {e}")
+
     elif qb_plugins:
+        # Uninstall existing plugins if no new plugins are specified
         for plugin in qb_plugins:
             await sync_to_async(qbclient.search_uninstall_plugin, names=plugin['name'])
         globals()['PLUGINS'] = []
+
     await sync_to_async(qbclient.auth_log_out)
 
+    # Handle SEARCH_API_LINK as before
     if SEARCH_API_LINK := config_dict['SEARCH_API_LINK']:
         global SITES
         try:
