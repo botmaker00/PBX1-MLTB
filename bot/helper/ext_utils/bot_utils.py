@@ -140,16 +140,27 @@ def handleIndex(index, dic):
     return index
     
 
-def get_progress_bar_string(pct):
+def get_progress_bar_string(pct: float) -> str:
     pct = float(str(pct).strip('%'))
     p = min(max(pct, 0), 100)
+
+    # har 8% pe ek naya block
     cFull = int(p // 8)
     cPart = int(p % 8 - 1)
-    p_str = '●' * cFull
+
+    # full filled square
+    p_str = '▰' * cFull
+
+    # partial fill (square variants)
+    squares = ['▱', '◩', '◪', '◫', '◨', '◧', '▰']
     if cPart >= 0:
-        p_str += ['◌', '○', '○', '◎', '◉', '◕', '●'][cPart]
-    p_str += '◌' * (12 - cFull)
+        p_str += squares[cPart]
+
+    # baaki empty squares
+    p_str += '▱' * (12 - cFull)
+
     return f"[{p_str}]"
+
 
 
 def get_all_versions():
