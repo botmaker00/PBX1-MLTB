@@ -256,20 +256,20 @@ class WZMLStyle:
     # ---------------------
 
     # USER Setting --> user_setting.py
-    USER_SETTING = """╭───────✦✧✦───────✘ 
+    USER_SETTING = """╭──────✦✧✦──────✘ 
 <blockquote><b><i>㊂ ᴜsᴇʀ sᴇᴛᴛɪɴɢs :</i></b>
         
 ┎ <b><i>ɴᴀᴍᴇ :</i></b> {NAME} ( <code>{ID}</code> )
 ┠ <b><i>ᴜsᴇʀɴᴀᴍᴇ :</i></b> {USERNAME}
 ┠ <b><i>ᴛᴇʟᴇɢʀᴀᴍ ᴅᴄ :</i></b> {DC}
 ┠ <b><i>ʟᴀɴɢᴜᴀɢᴇ :</i></b> {LANG}</blockquote>
-╰───────✦✧✦───────✘
+╰──────✦✧✦──────✘
 
 <b><i>➲ ᴀᴠᴀɪʟᴀʙʟᴇ ᴀʀɢs:</i></b>
 • <b>-s</b> or <b>-set</b>: <b><i>sᴇᴛ ᴅɪʀᴇᴄᴛʟʏ ᴠɪᴀ ᴀʀɢ</i></b>"""
 
 
-    UNIVERSAL = """╭───────✦✧✦──────✘ 
+    UNIVERSAL = """╭──────✦✧✦─────✘ 
     <b><i>㊂ ᴜɴɪᴠᴇʀsᴀʟ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
 
 ┎<b><i> ʏᴛ-ᴅʟᴘ ᴏᴘᴛɪᴏɴs :</i></b> <b><code>{YT}</code></b>
@@ -292,9 +292,9 @@ class WZMLStyle:
 ┠<b><i> ᴜsᴇʀ ᴛᴅ ᴍᴏᴅᴇ :</i></b> <i>{TMODE}</i>
 ┠<b><i> ᴛᴏᴛᴀʟ ᴜsᴇʀ ᴛᴅ(s) :</i></b> <i>{USERTD}</i>
 ┠<b><i> ᴅᴀɪʟʏ ᴍɪʀʀᴏʀ :</i></b> <code>{DM}</code> per day
-╰───────✦✧✦──────✘"""
+╰──────✦✧✦─────✘"""
 
-    LEECH = """╭───────✦✧✦──────✘
+    LEECH = """╭──────✦✧✦─────✘
     <b><i>㊂ ʟᴇᴇᴄʜ sᴇᴛᴛɪɴɢs ғᴏʀ {NAME}</i></b>
 
 ┎<b><i> ᴅᴀɪʟʏ ʟᴇᴇᴄʜ : </i></b><code>{DL}</code> per day
@@ -309,4 +309,4 @@ class WZMLStyle:
 ┠<b><i> ʟᴇᴇᴄʜ ᴅᴜᴍᴘs :</i></b> <code>{LDUMP}</code>
 ┠<b><i> ʟᴇᴇᴄʜ ʀᴇᴍɴᴀᴍᴇ :</i></b> <code>{LREMNAME}</code>
 ┖<b><i> ʟᴇᴇᴄʜ ᴍᴇᴛᴀᴅᴀᴛᴀ :</i></b> <code>{LMETA}</code>
-╰───────✦✧✦──────✘"""
+╰──────✦✧✦─────✘"""
